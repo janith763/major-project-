@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Selling Price Prediction</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Car Selling Price Prediction</h2>
+        <form action="/predict" method="POST">
+            <input type="text" name="car_name" placeholder="Enter Car Brand Name" required><br>
+            <input type="text" name="year" placeholder="Enter Car Purchased Year" required><br>
+            <input type="text" name="present_price" placeholder="Enter Price in Lakhs" required><br>
+            <input type="text" name="kms_driven" placeholder="Enter Car Driven Kms" required><br>
+            <link rel="stylesheet" href="style.css">
+
+            <select name="fuel_type">
+                <option disabled selected>Select Car Fuel Type</option>
+                <option>Petrol</option>
+                <option>Diesel</option>
+                <option>CNG</option>
+            </select><br>
+
+            <select name="seller_type">
+                <option disabled selected>Select Car Seller Type</option>
+                <option>Dealer</option>
+                <option>Individual</option>
+            </select><br>
+
+            <select name="transmission">
+                <option disabled selected>Select Car Transmission Type</option>
+                <option>Manual</option>
+                <option>Automatic</option>
+            </select><br>
+
+            <select name="owner">
+                <option disabled selected>Select Car Owner</option>
+                <option value="0">First Owner</option>
+                <option value="1">Second Owner</option>
+                <option value="2">Third Owner</option>
+                <option value="3">Fourth & Above Owner</option>
+            </select><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
